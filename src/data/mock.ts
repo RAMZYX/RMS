@@ -10,7 +10,6 @@ export type FamilyMember = {
   age: string;
   its: string;
   badge: BadgeKind;
-  // Warning that must be resolved before this member can be allocated alone.
   warning?: {
     message: string;
     kind: 'guardian' | 'caregiver';
@@ -26,58 +25,16 @@ export type Mehmaan = {
 };
 
 export const family: FamilyMember[] = [
+  { id: 'yusuf', name: 'Yusuf husain', initials: 'YH', relationship: 'Admin', age: '31', its: '30412786', badge: 'registrant' },
+  { id: 'sakina', name: 'Sakina Husain', initials: 'SH', relationship: 'Spouse', age: '28', its: '30412790', badge: 'caregiver' },
   {
-    id: 'yusuf',
-    name: 'Yusuf husain',
-    initials: 'YH',
-    relationship: 'Admin',
-    age: '31',
-    its: '30412786',
-    badge: 'registrant',
+    id: 'nazia', name: 'Syed nazia', initials: 'SN', relationship: 'Daughter', age: '09', its: '30412790', badge: 'dependent',
+    warning: { message: 'Children under 10 cannot be allocated independently. Assign a guardian.', kind: 'guardian' },
   },
+  { id: 'mohammed', name: 'Mohammed husain', initials: 'MH', relationship: 'Father', age: '62', its: '30412790', badge: null },
   {
-    id: 'sakina',
-    name: 'Sakina Husain',
-    initials: 'SH',
-    relationship: 'Spouse',
-    age: '28',
-    its: '30412790',
-    badge: 'caregiver',
-  },
-  {
-    id: 'nazia',
-    name: 'Syed nazia',
-    initials: 'SN',
-    relationship: 'Daughter',
-    age: '09',
-    its: '30412790',
-    badge: 'dependent',
-    warning: {
-      message: 'Children under 10 cannot be allocated independently. Assign a guardian.',
-      kind: 'guardian',
-    },
-  },
-  {
-    id: 'mohammed',
-    name: 'Mohammed husain',
-    initials: 'MH',
-    relationship: 'Father',
-    age: '62',
-    its: '30412790',
-    badge: null,
-  },
-  {
-    id: 'amatullah',
-    name: 'Amatullah bhen',
-    initials: 'AB',
-    relationship: 'Mother',
-    age: '58',
-    its: '30412790',
-    badge: 'dependent',
-    warning: {
-      message: 'This member requires medical assistance. Assign a caregiver.',
-      kind: 'caregiver',
-    },
+    id: 'amatullah', name: 'Amatullah bhen', initials: 'AB', relationship: 'Mother', age: '58', its: '30412790', badge: 'dependent',
+    warning: { message: 'This member requires medical assistance. Assign a caregiver.', kind: 'caregiver' },
   },
 ];
 
@@ -104,24 +61,14 @@ export type MiqaatEvent = {
 
 export const events: MiqaatEvent[] = [
   {
-    id: 'eid-ghadeer-live',
-    title: 'Eid-e-Ghadeer 1447H',
-    date: 'Sat, 21 Jun, 2026',
-    time: '06:30 Am IST',
-    status: 'live',
-    statusLine: 'Registration ends in Thu, 19 Jun 2026 · 09:00 AM IST',
-    countdown: { days: '02', hours: '02', mins: '13', secs: '26' },
-    cta: 'Register now',
+    id: 'eid-ghadeer-live', title: 'Eid-e-Ghadeer 1447H', date: 'Sat, 21 Jun, 2026', time: '06:30 Am IST',
+    status: 'live', statusLine: 'Registration ends in Thu, 19 Jun 2026 · 09:00 AM IST',
+    countdown: { days: '02', hours: '02', mins: '13', secs: '26' }, cta: 'Register now',
   },
   {
-    id: 'eid-ghadeer-upcoming',
-    title: 'Eid-e-Ghadeer 1447H',
-    date: 'Mon, 23 Jun, 2026',
-    time: '06:30 Am IST',
-    status: 'upcoming',
-    statusLine: 'Registration opens at Thu, 19 Jun 2026 · 09:00 AM IST',
-    countdown: { days: '02', hours: '02', mins: '13', secs: '26' },
-    cta: 'View Details',
+    id: 'eid-ghadeer-upcoming', title: 'Eid-e-Ghadeer 1447H', date: 'Mon, 23 Jun, 2026', time: '06:30 Am IST',
+    status: 'upcoming', statusLine: 'Registration opens at Thu, 19 Jun 2026 · 09:00 AM IST',
+    countdown: { days: '02', hours: '02', mins: '13', secs: '26' }, cta: 'View Details',
   },
 ];
 

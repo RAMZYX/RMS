@@ -1,63 +1,19 @@
-import React from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
-import { colors, fonts } from '../theme';
+import { Fragment } from 'react';
+import { MdChevronRight } from 'react-icons/md';
 
-export type Crumb = {
-  label: string;
-  onPress?: () => void;
-  active?: boolean;
-};
+export type Crumb = { label: string; to?: () => void; active?: boolean };
 
 export function Breadcrumb({ items }: { items: Crumb[] }) {
   return (
-    <View style={styles.row}>
+    <nav className="crumbs">
       {items.map((item, i) => (
-        <View key={`${item.label}-${i}`} style={styles.item}>
-          <Pressable onPress={item.onPress} disabled={!item.onPress}>
-            <Text
-              style={[styles.label, item.active && styles.active]}
-              numberOfLines={1}
-            >
-              {item.label}
-            </Text>
-          </Pressable>
-          {i < items.length - 1 && (
-            <MaterialIcons
-              name="chevron-right"
-              size={16}
-              color={colors.crumbInactive}
-              style={styles.chevron}
-            />
-          )}
-        </View>
+        <Fragment key={`${item.label}-${i}`}>
+          <span className={`crumb${item.active ? ' active' : ''}`}>
+            {item.to ? <button onClick={item.to}>{item.label}</button> : item.label}
+          </span>
+          {i < items.length - 1 && <MdChevronRight />}
+        </Fragment>
       ))}
-    </View>
+    </nav>
   );
 }
-
-const styles = StyleSheet.create({
-  row: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    rowGap: 6,
-  },
-  item: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  label: {
-    fontFamily: fonts.regular,
-    fontSize: 14,
-    lineHeight: 21,
-    color: colors.crumbInactive,
-  },
-  active: {
-    color: colors.crumbActive,
-    fontFamily: fonts.semibold,
-  },
-  chevron: {
-    marginHorizontal: 4,
-  },
-});
