@@ -48,7 +48,7 @@ async function tap(page, text, { last = false } = {}) {
     console.log('frame', name);
   };
 
-  await page.goto(`http://localhost:${PORT}/login`, { waitUntil: 'networkidle0' });
+  await page.goto(`http://localhost:${PORT}/#/login`, { waitUntil: 'networkidle0' });
   await sleep(800);
   await grab('1-login');
   await tap(page, 'Login');

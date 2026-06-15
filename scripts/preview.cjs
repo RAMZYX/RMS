@@ -24,7 +24,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 2 });
 
   for (const [route, name] of routes) {
-    await page.goto(`http://localhost:${PORT}/${route}`, { waitUntil: 'networkidle0', timeout: 30000 });
+    await page.goto(`http://localhost:${PORT}/#/${route}`, { waitUntil: 'networkidle0', timeout: 30000 });
     await sleep(900);
     await page.screenshot({ path: path.join(OUT, `${name}.png`) });
     console.log('captured', name);
