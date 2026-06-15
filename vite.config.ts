@@ -2,8 +2,9 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
-// On GitHub Pages the app is served from /<repo>/; locally from /.
-const base = process.env.GITHUB_PAGES ? '/rms/' : '/';
+// On GitHub Pages the app is served from /<repo>/ (case-sensitive — the repo
+// is "RMS"); locally from /.
+const base = process.env.GITHUB_PAGES ? '/RMS/' : '/';
 
 export default defineConfig({
   base,
