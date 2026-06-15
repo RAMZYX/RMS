@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, type LinkingOptions } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useFonts, Marcellus_400Regular } from '@expo-google-fonts/marcellus';
 import {
@@ -14,8 +14,22 @@ import {
 } from '@expo-google-fonts/mulish';
 import { Amiri_400Regular } from '@expo-google-fonts/amiri';
 import { RootNavigator } from './src/navigation/RootNavigator';
+import type { RootStackParamList } from './src/navigation/types';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
+
+const linking: LinkingOptions<RootStackParamList> = {
+  prefixes: [],
+  config: {
+    screens: {
+      Login: 'login',
+      MiqaatList: 'miqaats',
+      RegistrationDetail: 'detail',
+      AddPeople: 'add-people',
+      Review: 'review',
+    },
+  },
+};
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -42,7 +56,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <View style={{ flex: 1 }} onLayout={onReady}>
-        <NavigationContainer>
+        <NavigationContainer linking={linking}>
           <RootNavigator />
         </NavigationContainer>
       </View>
