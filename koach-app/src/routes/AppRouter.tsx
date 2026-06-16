@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
+import { createHashRouter, Navigate, RouterProvider } from 'react-router-dom';
 import { DashboardLayout } from '@/components/templates/DashboardLayout';
 
 // All route components are code-split via React.lazy.
@@ -10,7 +10,7 @@ const FeedbackPage = lazy(() => import('@/pages/FeedbackPage'));
 const LearnerResponsesPage = lazy(() => import('@/pages/LearnerResponsesPage'));
 const FeedbackResponsesPage = lazy(() => import('@/pages/FeedbackResponsesPage'));
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <DashboardLayout />,
