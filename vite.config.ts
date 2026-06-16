@@ -32,11 +32,6 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,woff,woff2,ttf}'],
-        // The Koach app is published at /RMS/koach/ as a separate SPA. Keep the
-        // Miqāt service worker from hijacking those navigations with its own
-        // app shell, and don't precache Koach's assets.
-        navigateFallbackDenylist: [/\/koach\//],
-        globIgnores: ['koach/**'],
       },
     }),
   ],
